@@ -1,0 +1,90 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.*
+
+# IDEs / Editors
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# FastAPI / Uvicorn
+uvicorn.log
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Uploaded files
+uploads/
+
+# Temporary files
+tmp/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Model cache
+cache/
+models/
+hf_cache/
+
+# Sentence Transformers / HuggingFace cache
+.huggingface/
+transformers_cache/
+
+# Local sqlite
+*.sqlite3
+
+# Docker
+docker-compose.override.yml
+
+# Misc
+*.swp
+*.swo
