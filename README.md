@@ -6,11 +6,15 @@ Système intelligent de matching entre CV et offres d'emploi basé sur NLP et em
 
 ## 📁 Structure du projet
 
+```bash
+
 ├── frontend/ (Next.js)
 ├── backend/ (Laravel)
 └── ai-service/ (FastAPI)
 │
 └── README.md
+
+```
 
 ---
 
