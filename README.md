@@ -44,7 +44,7 @@ Système intelligent de matching entre CV et offres d'emploi basé sur NLP et em
 ### 1. Backend Laravel
 
 ```bash
-cd apps/backend
+cd backend
 composer install
 php artisan migrate
 php artisan serve
@@ -54,7 +54,7 @@ php artisan serve
 2. Frontend Next.js
 
 ```bash
-cd apps/frontend
+cd frontend
 npm install
 npm run dev
 
@@ -64,7 +64,7 @@ npm run dev
 
 ```bash
 
-cd apps/ai-service
+cd ai-service
 
 Windows: .venv\Scripts\activate | Linux: source .venv/Scripts/activate
 
