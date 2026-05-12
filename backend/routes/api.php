@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AnalysisController;
 use App\Http\Controllers\Api\Auth\GoogleAuthController;
 use App\Http\Controllers\Api\Auth\LogoutController;
@@ -8,116 +9,48 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ResumeController;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
-| Public Routes
+| PUBLIC ROUTES
 |--------------------------------------------------------------------------
 */
 
 Route::prefix('auth')->group(function () {
-
-    Route::get('/google/redirect', [
-        GoogleAuthController::class,
-        'redirect',
-    ]);
-
-    Route::get('/google/callback', [
-        GoogleAuthController::class,
-        'callback',
-    ]);
+    Route::get('/google/redirect', [GoogleAuthController::class, 'redirect']);
+    Route::get('/google/callback', [GoogleAuthController::class, 'callback']);
 });
 
 /*
 |--------------------------------------------------------------------------
-| Protected Routes
+| PROTECTED ROUTES (AUTH SANCTUM)
 |--------------------------------------------------------------------------
 */
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Auth
-    |--------------------------------------------------------------------------
-    */
-
+    // AUTH
     Route::post('/logout', LogoutController::class);
 
-    /*
-    |--------------------------------------------------------------------------
-    | Profile
-    |--------------------------------------------------------------------------
-    */
+    // PROFILE
+    Route::get('/profile', [ProfileController::class, 'show']);
 
-    Route::get('/profile', [
-        ProfileController::class,
-        'show',
-    ]);
-
-    /*
-    |--------------------------------------------------------------------------
-    | Resumes
-    |--------------------------------------------------------------------------
-    */
-
+    // RESUMES
     Route::prefix('resumes')->group(function () {
-
-        Route::get('/', [
-            ResumeController::class,
-            'index',
-        ]);
-
-        Route::post('/', [
-            ResumeController::class,
-            'store',
-        ]);
-
-        Route::get('/{resume}', [
-            ResumeController::class,
-            'show',
-        ]);
-
-        Route::delete('/{resume}', [
-            ResumeController::class,
-            'destroy',
-        ]);
-
-        Route::post('/{resume}/analyze', [
-            ResumeController::class,
-            'analyze',
-        ]);
-
-        Route::get('/{resume}/download', [
-            ResumeController::class,
-            'download',
-        ])->name('resumes.download');
+        Route::get('/', [ResumeController::class, 'index']);
+        Route::post('/', [ResumeController::class, 'store']);
+        Route::get('/{resume}', [ResumeController::class, 'show']);
+        Route::delete('/{resume}', [ResumeController::class, 'destroy']);
+        Route::post('/{resume}/analyze', [ResumeController::class, 'analyze']);
+        Route::get('/{resume}/download', [ResumeController::class, 'download']);
     });
 
-    /*
-    |--------------------------------------------------------------------------
-    | Job Offers
-    |--------------------------------------------------------------------------
-    */
-
+    // JOB OFFERS
     Route::apiResource('job-offers', JobOfferController::class);
 
-    /*
-    |--------------------------------------------------------------------------
-    | Analyses
-    |--------------------------------------------------------------------------
-    */
-
+    // ANALYSES
     Route::prefix('analyses')->group(function () {
-
-        Route::get('/', [
-            AnalysisController::class,
-            'index',
-        ]);
-
-        Route::get('/{analysis}', [
-            AnalysisController::class,
-            'show',
-        ]);
+        Route::get('/', [AnalysisController::class, 'index']);
+        Route::post('/match', [AnalysisController::class, 'match']);
+        Route::get('/{analysis}', [AnalysisController::class, 'show']);
     });
 });
