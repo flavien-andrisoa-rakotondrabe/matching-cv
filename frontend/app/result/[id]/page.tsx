@@ -12,7 +12,6 @@ export default function HomePage() {
   const offset = useMemo(() => {
     return circumference - (score / 100) * circumference;
   }, [score, circumference]);
-
   const color =
     score < 40
       ? "stroke-red-500"
