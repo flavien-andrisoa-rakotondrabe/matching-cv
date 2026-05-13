@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import ParticleBackground from "@/components/ParticuleBackground";
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-serif",
   subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -28,62 +28,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-          {children}
-
-        {/* <div className="relative w-full min-h-dvh">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1400"
-            height="919"
-            viewBox="0 0 2446 919"
-            fill="none"
-            className="absolute bottom-0 w-full h-dvh"
-          >
-            <g filter="url(#filter0_f_122_83)">
-              <ellipse
-                cx="1223"
-                cy="999"
-                rx="1380"
-                ry="499"
-                fill="url(#paint0_linear_122_83)"
-              />
-            </g>
-            <defs>
-              <filter
-                id="filter0_f_122_83"
-                x="-657"
-                y="0"
-                width="3760"
-                height="1998"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
-                <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="250"
-                  result="effect1_foregroundBlur_122_83"
-                />
-              </filter>
-              <linearGradient
-                id="paint0_linear_122_83"
-                x1="1223"
-                y1="500"
-                x2="1223"
-                y2="1498"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="oklch(0.5676 0.2021 283.0838)" />
-                <stop offset="1" stopColor="oklch(0.6746 0.1414 261.3380)" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div> */}
+        <ParticleBackground />
+        <main className="z-50">{children}</main>
       </body>
     </html>
   );
